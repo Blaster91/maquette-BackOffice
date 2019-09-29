@@ -18,7 +18,7 @@
             <li class="nav-item"><a class="nav-link" href="#price">PRICE</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">CONTACT</a></li>
             <li class="nav-item"><a class="nav-link fas fa-search fa-flip-horizontal" href="#" style="color:#00a99d;"></a></li>
-            <li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+            <li class="nav-item"><a class="nav-link" onclick="document.getElementById('id01').style.display='block'" href="#"><i class="far fa-user"></i></a></li>
       </ul>
     </div>
   </nav>

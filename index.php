@@ -1,23 +1,3 @@
-<?php
-// On démarre la session AVANT d'écrire du code HTML
-session_start();
-
-// On s'amuse à créer quelques variables de session dans $_SESSION
-$_SESSION['pseudo'] = 'Blaster91';
-?>
-
-<?php
-try
-{
-	$bdd = new PDO('mysql:host=localhost;dbname=db_startuprr;charset=utf8', 'root', '');
-}
-catch (Exception $e)
-{
-        die('Erreur : ' . $e->getMessage());
-}
-?>
-
-
 
 <?php include("header.php"); ?>
 
@@ -36,29 +16,46 @@ catch (Exception $e)
 <section id="login">
   <div id="id01" class="modal">
 
-    <form class="modal-content animate" action="/action_page.php" method="post">
+    <form class="modal-content animate" action="login.php" method="post">
       <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
       </div>
 
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Formulaire login >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+			<div class="container">
+			 <label for="pseudo"><b>Pseudo</b></label>
+			 <input type="text" placeholder="Entrer votre pseudo" name="pseudo" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+			 <label for="password"><b>Mot de passe</b></label>
+			 <input type="password" placeholder="Entrer votre mot de passe" name="password" required>
 
-        <button type="submit">Login</button>
+			 <button type="submit" style="border-radius: 5px;">Se connecter</button>
+			 <label>
+				 <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+			 </label>
+		 </div>
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< Formulaire Creer un Compte >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+      <!-- <div class="container">
+        <label for="pseudo"><b>Pseudo</b></label>
+        <input type="text" placeholder="Entrer votre pseudo" name="pseudo" required>
+
+        <label for="password"><b>Mot de passe</b></label>
+        <input type="password" placeholder="Entrer votre mot de passe" name="password" required>
+
+				<label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Entrer votre mot de passe" name="email" required>
+
+        <button type="submit" style="border-radius: 5px;">Se connecter</button>
         <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
+          <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
         </label>
-      </div>
+      </div> -->
 
-      <div class="container" style="background-color:#f1f1f1">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Creer un compte</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+      <div class="container" style="background-color:#f1f1f1; border: 1px solid gainsboro; border-bottom-left-radius: 3px;border-bottom-right-radius: 0.3rem">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="border-radius: 5px;">Quitter</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" style="border-radius: 5px; background-color: #0096ff;">Creer un compte</button>
+        <span class="psw">Mot de passe <a href="#">oublié?</a></span>
       </div>
     </form>
   </div>
