@@ -2,9 +2,9 @@
 session_start();
 
 if($_SESSION['login_in'] == true){
-  echo $_SESSION['pseudo'] . " est connecté";
+  echo '<p style="margin-bottom: 0;margin-left: 20px;">' . $_SESSION['pseudo'] .   ' est connecté  <i class="fas fa-circle" style="color: #4CAF50; font-size: 0.7em;"></i> </p>';
 } else {
-  echo "déco" ;
+  echo '<p style="margin-bottom: 0;margin-left: 20px;">déconnecté  <i class="fas fa-circle" style="color: red; font-size: 0.7em;"></i> </p>' ;
 }
 
 ?>
