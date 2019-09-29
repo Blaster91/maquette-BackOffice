@@ -1,8 +1,7 @@
 <?php
-
-if (isset($_POST['pseudo']) AND isset($_POST['password']) AND isset($_POST['email']))
+session_start();
+if (isset($_POST['pseudo']) AND isset($_POST['password']))
 {
-  $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
   try
   {
   	$bdd = new PDO('mysql:host=localhost;dbname=db_startuprr;charset=utf8', 'root', '');
@@ -11,36 +10,45 @@ if (isset($_POST['pseudo']) AND isset($_POST['password']) AND isset($_POST['emai
   {
           die('Erreur : ' . $e->getMessage());
   }
-
-$pseudo = $_POST['pseudo'];
+$ps = $_POST['pseudo'];
 
   //  Récupération de l'utilisateur et de son pass hashé
   $req = $bdd->prepare('SELECT id, pseudo, password FROM login WHERE pseudo = :pseudo');
-  $req->execute(array('pseudo' => $pseudo));
+  $req->execute(array('pseudo' => $ps));
+  echo $ps;
   $resultat = $req->fetch();
 
   // Comparaison du pass envoyé via le formulaire avec la base
   $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
-
   if (!$resultat)
   {
       echo 'Mauvais identifiant ou mot de passe !';
+      $_SESSION['login_in'] = false;
+      header('Location: index.php');
+      $_SESSION['pseudo'] = "";
   }
   else
   {
       if ($isPasswordCorrect) {
           session_start();
           $_SESSION['id'] = $resultat['id'];
-          $_SESSION['pseudo'] = $pseudo;
-          echo 'Vous êtes connecté !';
+          $_SESSION['pseudo'] = $ps;
+          header('Location: index.php');
+          $_SESSION['login_in'] = true;
       }
-      else {
-          echo 'Mauvais identifiant ou mot de passe !';
+      else if (!$isPasswordCorrect) {
+        echo 'Mauvais identifiant ou mot de passe !';
+        $_SESSION['login_in'] = false;
+        header('Location: index.php');
+        $_SESSION['pseudo'] = "";
+
       }
   }
 // Puis rediriger vers minichat.php comme ceci :
 // header('Location: message.php');
 }
+
+
 ?>
 
 

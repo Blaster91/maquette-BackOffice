@@ -1,4 +1,13 @@
+<?php
+session_start();
 
+if($_SESSION['login_in'] == true){
+  echo $_SESSION['pseudo'] . " est connecté";
+} else {
+  echo "déco" ;
+}
+
+?>
 <?php include("header.php"); ?>
 
 <body>

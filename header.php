@@ -1,11 +1,5 @@
-<?php
-session_start();
-echo $_SESSION['pseudo'] . "est connecté"
-?>
-
 
 <html lang="fr" dir="ltr">
-
 <head>
     <meta charset="utf-8">
     <meta name="author" lang="fr" content="Eddy MORLON, Thomas Gallusser">
