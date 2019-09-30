@@ -1,5 +1,6 @@
 <?php
 session_start();
+// initialisation
 if (isset($_POST['pseudo']) AND isset($_POST['password']))
 {
   try
@@ -23,7 +24,7 @@ $ps = $_POST['pseudo'];
   if (!$resultat)
   {
       echo 'Mauvais identifiant ou mot de passe !';
-      $_SESSION['login_in'] = false;
+      $_SESSION['login_in'] = null;
       header('Location: index.php');
       $_SESSION['pseudo'] = "";
   }
@@ -38,7 +39,7 @@ $ps = $_POST['pseudo'];
       }
       else if (!$isPasswordCorrect) {
         echo 'Mauvais identifiant ou mot de passe !';
-        $_SESSION['login_in'] = false;
+        $_SESSION['login_in'] = null;
         header('Location: index.php');
         $_SESSION['pseudo'] = "";
 
