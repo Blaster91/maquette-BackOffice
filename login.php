@@ -34,7 +34,7 @@ $ps = $_POST['pseudo'];
           session_start();
           $_SESSION['id'] = $resultat['id'];
           $_SESSION['pseudo'] = $ps;
-          header('Location: index.php');
+          header('Location: backoffice.php');
           $_SESSION['login_in'] = true;
       }
       else if (!$isPasswordCorrect) {
